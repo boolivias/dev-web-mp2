@@ -1,6 +1,8 @@
 CREATE TABLE linha (
 	id INT GENERATED ALWAYS AS IDENTITY,
 	nome VARCHAR,
+    lotacao INT DEFAULT 40,
+    gastoPorKm NUMERIC DEFAULT 0.00,
 	PRIMARY KEY(id)
 );
 

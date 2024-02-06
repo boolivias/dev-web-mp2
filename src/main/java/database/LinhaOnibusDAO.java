@@ -43,6 +43,8 @@ public class LinhaOnibusDAO {
                 LinhaOnibus linha = new LinhaOnibus();
                 linha.setId(rs.getInt("id"));
                 linha.setNome(rs.getString("nome"));
+                linha.setGastoPorKm(rs.getDouble("gastoPorKm"));
+                linha.setLotacao(rs.getInt("lotacao"));
 
                 linhas.add(linha);
             }
