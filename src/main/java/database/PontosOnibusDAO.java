@@ -18,7 +18,7 @@ public class PontosOnibusDAO {
     protected Connection getConnection() {
         Connection conn = null;
         try {
-            Class.forName("org.postgresql");
+            Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection(connection, user, pass);
             return conn;
         } catch (SQLException e) {
