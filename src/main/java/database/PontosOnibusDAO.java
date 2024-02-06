@@ -13,7 +13,7 @@ import model.PontosOnibus;
 
 public class PontosOnibusDAO {
     private String connection = "jdbc:postgresql://localhost:5432/mp2";
-    private String user = "postgres", pass = "";
+    private String user = "postgres", pass = "123456";
 
     protected Connection getConnection() {
         Connection conn = null;
@@ -32,24 +32,24 @@ public class PontosOnibusDAO {
 
     public List<PontosOnibus> getPrevisao(int pontoId) {
         List<PontosOnibus> pontos = new ArrayList<>();
-        String querySelect = "SELECT * FROM pontos_onibus po JOIN linhas_onibus lo on po.linhaId = lo.id ORDER BY po.minPrevisao DESC WHERE po.id = ?;";
+        String querySelect = "SELECT po.*, l.nome FROM pontos_onibus po JOIN linha l on po.linhaId = l.id WHERE po.id = ? ORDER BY po.minPrevisao DESC;";
 
         try {
             Connection conn = getConnection();
             PreparedStatement preparedStatement = conn.prepareStatement(querySelect);
             preparedStatement.setInt(1, pontoId);
             
-            ResultSet rs = preparedStatement.executeQuery(querySelect);
+            ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
                 PontosOnibus po = new PontosOnibus();
-                po.setId(rs.getInt("po.id"));
-                po.setMin_previsao(rs.getInt("po.minPrevisao"));
+                po.setId(rs.getInt("id"));
+                po.setMin_previsao(rs.getInt("minprevisao"));
                 
-                po.setLinha_id(rs.getInt("lo.id"));
+                po.setLinha_id(rs.getInt("linhaid"));
                 LinhaOnibus linha = new LinhaOnibus();
-                linha.setId(rs.getInt("lo.id"));
-                linha.setNome(rs.getString("lo.nome"));
+                linha.setId(rs.getInt("linhaid"));
+                linha.setNome(rs.getString("nome"));
                 po.setLinha(linha);
 
                 pontos.add(po);

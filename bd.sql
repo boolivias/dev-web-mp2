@@ -7,10 +7,10 @@ CREATE TABLE linha (
 );
 
 CREATE TABLE pontos_onibus (
-	id INT GENERATED ALWAYS AS IDENTITY,
+	id INT,
 	linhaId INT,
 	minPrevisao INT,
-	PRIMARY KEY(id),
+	PRIMARY KEY(id, linhaId),
    CONSTRAINT fk_linha_onibus
       FOREIGN KEY(linhaId) 
         REFERENCES linha(id)
