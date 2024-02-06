@@ -56,3 +56,7 @@ INSERT INTO pontos_onibus(id, linhaId, minPrevisao) VALUES
     (6, 7, 14),
     (1, 7, 30)
 ;
+
+UPDATE linha SET gastoporkm = (random()* 3) + 2;
+
+UPDATE linha SET lotacao = (random()* 13) + 2;

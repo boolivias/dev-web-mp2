@@ -11,8 +11,8 @@ import java.util.List;
 import model.LinhaOnibus;
 
 public class LinhaOnibusDAO {
-    private String connection = "jdbc:postgresql://localhost:5432/mp2";
-    private String user = "postgres", pass = "123456";
+    String connection = "jdbc:postgresql://localhost:5432/alunoweb";
+    String user = "postgres", pass = "password";
 
     protected Connection getConnection() {
         Connection conn = null;
@@ -30,14 +30,14 @@ public class LinhaOnibusDAO {
     }
 
     public List<LinhaOnibus> getLinhas() {
-        String querySelect = "SELECT * FROM linhas_onibus;";
+        String querySelect = "SELECT * FROM linha;";
         List<LinhaOnibus> linhas = new ArrayList<>();
 
         try {
             Connection conn = getConnection();
             PreparedStatement preparedStatement = conn.prepareStatement(querySelect);
             
-            ResultSet rs = preparedStatement.executeQuery(querySelect);
+            ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
                 LinhaOnibus linha = new LinhaOnibus();

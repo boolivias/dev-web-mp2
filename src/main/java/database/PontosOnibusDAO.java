@@ -12,8 +12,8 @@ import model.LinhaOnibus;
 import model.PontosOnibus;
 
 public class PontosOnibusDAO {
-    private String connection = "jdbc:postgresql://localhost:5432/mp2";
-    private String user = "postgres", pass = "123456";
+    String connection = "jdbc:postgresql://localhost:5432/alunoweb";
+    String user = "postgres", pass = "password";
 
     protected Connection getConnection() {
         Connection conn = null;
@@ -32,7 +32,7 @@ public class PontosOnibusDAO {
 
     public List<PontosOnibus> getPrevisao(int pontoId) {
         List<PontosOnibus> pontos = new ArrayList<>();
-        String querySelect = "SELECT po.*, l.nome FROM pontos_onibus po JOIN linha l on po.linhaId = l.id WHERE po.id = ? ORDER BY po.minPrevisao DESC;";
+        String querySelect = "SELECT po.*, l.nome FROM pontos_onibus po JOIN linha l on po.linhaId = l.id WHERE po.id = ? ORDER BY po.minPrevisao ASC;";
 
         try {
             Connection conn = getConnection();
