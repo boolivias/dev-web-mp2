@@ -9,7 +9,7 @@
   <groupId>com.example</groupId>
   <artifactId>web-mp2</artifactId>
   <packaging>war</packaging>
-  <version>1.14-SNAPSHOT</version>
+  <version>1.21-SNAPSHOT</version>
   <name>web-mp2 Web App</name>
 
   <properties>

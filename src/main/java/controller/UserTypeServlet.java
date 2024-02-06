@@ -20,10 +20,12 @@ public class UserTypeServlet extends HttpServlet {
     }
 
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
      throws ServletException, IOException {
-
-        if (request.getAttribute("user") == "funcionario"){
+        String user = request.getParameter("user");
+        // if (user.equalsIgnoreCase("funcionario")){
+        System.out.println(user);
+        if (user != null && user.equalsIgnoreCase("funcionario")){
             request.setAttribute("linhas", linhasDAO.getLinhas());
             RequestDispatcher dispatcher = request.getRequestDispatcher("./GRAFICOS-ONIBUS.JSP");
             dispatcher.forward(request, response);
