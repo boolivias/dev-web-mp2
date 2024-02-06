@@ -12,7 +12,7 @@ import model.LinhaOnibus;
 
 public class LinhaOnibusDAO {
     private String connection = "jdbc:postgresql://localhost:5432/mp2";
-    private String user = "postgres", pass = "";
+    private String user = "postgres", pass = "123456";
 
     protected Connection getConnection() {
         Connection conn = null;
